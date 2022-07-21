@@ -52,6 +52,7 @@ if __name__ == '__main__':
     root.resizable(False, False)
     root.wait_visibility(root)
     root.wm_attributes('-alpha', 0.3)
+    root.attributes('-topmost', 1)
 
     root.bind("<Button-1>", left_click)
     root.bind("<Button-3>", right_click)  # TODO: 3?
