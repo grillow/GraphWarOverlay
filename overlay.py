@@ -42,7 +42,7 @@ def right_click(event):
                     .format(EXP=EXP, px=prev.x, cx=curr.x, dx=dx, dy=dy)
         else:
             function += \
-                "+1/(1+exp(-{EXP}*(x-({px}))))*{dy}" \
+                "+1/(1+exp(-{EXP}*(x-({px}))))*({dy})" \
                     .format(EXP=EXP, px=prev.x, dy=dy)
 
     print(function)
