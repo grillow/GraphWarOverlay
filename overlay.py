@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from tkinter import Tk
 
+
 @dataclass
 class Point:
     x: float
@@ -16,8 +17,8 @@ WINDOW_HEIGHT = 450
 
 
 def left_click(event):
-    x = (event.x / WINDOW_WIDTH) * MAP_WIDTH - MAP_WIDTH/2
-    y = -(event.y / WINDOW_HEIGHT) * MAP_HEIGHT + MAP_HEIGHT/2
+    x = (event.x / WINDOW_WIDTH) * MAP_WIDTH - MAP_WIDTH / 2
+    y = -(event.y / WINDOW_HEIGHT) * MAP_HEIGHT + MAP_HEIGHT / 2
     points.append(Point(x, y))
 
 
@@ -32,13 +33,13 @@ def right_click(event):
         dy = curr.y - prev.y
 
         if dx != 0:
-            function +=\
-                "+1/(1+exp(-1000*(x-({px}))))*({dy}/{dx})*(x-({px}))-1/(1+exp(-1000*(x-({cx}))))*({dy}/{dx})*(x-({cx}))"\
-                .format(px=prev.x, cx=curr.x, dx=dx, dy=dy)
+            function += \
+                "+1/(1+exp(-1000*(x-({px}))))*({dy}/{dx})*(x-({px}))-1/(1+exp(-1000*(x-({cx}))))*({dy}/{dx})*(x-({cx}))" \
+                    .format(px=prev.x, cx=curr.x, dx=dx, dy=dy)
         else:
-            function +=\
-                "+1/(1+exp(-1000*(x-({px}))))*{dy}"\
-                .format(px=prev.x, dy=dy)
+            function += \
+                "+1/(1+exp(-1000*(x-({px}))))*{dy}" \
+                    .format(px=prev.x, dy=dy)
 
     print(function)
     points.clear()
