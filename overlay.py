@@ -49,6 +49,7 @@ if __name__ == '__main__':
     root = Tk()
     root.title('GraphWar Overlay')
     root.geometry("{}x{}".format(WINDOW_WIDTH, WINDOW_HEIGHT))
+    root.resizable(False, False)
     root.wait_visibility(root)
     root.wm_attributes('-alpha', 0.3)
 
