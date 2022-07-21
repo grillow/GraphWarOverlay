@@ -19,7 +19,7 @@ WINDOW_HEIGHT = 450
 def left_click(event):
     x = (event.x / WINDOW_WIDTH) * MAP_WIDTH - MAP_WIDTH / 2
     y = -(event.y / WINDOW_HEIGHT) * MAP_HEIGHT + MAP_HEIGHT / 2
-    print("point clicked:\t{} {}".format(x, y))
+    print("point clicked:\t{}\t{}".format(x, y))
     if len(points) != 0:
         if x < points[-1].x:
             x = points[-1].x
