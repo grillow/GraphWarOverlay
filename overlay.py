@@ -35,14 +35,15 @@ def right_click(event):
         dx = curr.x - prev.x
         dy = curr.y - prev.y
 
+        EXP = 25
         if dx != 0:
             function += \
-                "+1/(1+exp(-1000*(x-({px}))))*({dy}/{dx})*(x-({px}))-1/(1+exp(-1000*(x-({cx}))))*({dy}/{dx})*(x-({cx}))" \
-                    .format(px=prev.x, cx=curr.x, dx=dx, dy=dy)
+                "+1/(1+exp(-{EXP}*(x-({px}))))*({dy}/{dx})*(x-({px}))-1/(1+exp(-{EXP}*(x-({cx}))))*({dy}/{dx})*(x-({cx}))" \
+                    .format(EXP=EXP, px=prev.x, cx=curr.x, dx=dx, dy=dy)
         else:
             function += \
-                "+1/(1+exp(-1000*(x-({px}))))*{dy}" \
-                    .format(px=prev.x, dy=dy)
+                "+1/(1+exp(-{EXP}*(x-({px}))))*{dy}" \
+                    .format(EXP=EXP, px=prev.x, dy=dy)
 
     print(function)
     points.clear()
