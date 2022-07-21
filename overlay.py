@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from tkinter import Tk
+import pyperclip
 
 
 @dataclass
@@ -19,14 +20,14 @@ WINDOW_HEIGHT = 450
 def left_click(event):
     x = (event.x / WINDOW_WIDTH) * MAP_WIDTH - MAP_WIDTH / 2
     y = -(event.y / WINDOW_HEIGHT) * MAP_HEIGHT + MAP_HEIGHT / 2
-    print("point clicked:\t{}\t{}".format(x, y))
+    print("Point clicked:\t{}\t{}".format(x, y))
     if len(points) != 0:
         if x < points[-1].x:
             x = points[-1].x
     points.append(Point(x, y))
 
 
-def right_click(event):
+def build_function():
     function = ""
 
     for i in range(1, len(points)):
@@ -46,9 +47,19 @@ def right_click(event):
                 "+1/(1+exp(-{EXP}*(x-({px}))))*({dy})" \
                     .format(EXP=EXP, px=prev.x, dy=dy)
 
-    if function != "":
-        print("\n{}\n".format(function))
+    return function
+
+
+def right_click(event):
     points.clear()
+    print("Cleared trajectory")
+
+
+def key_click(event):
+    if event.char == 'c':
+        function = build_function()
+        pyperclip.copy(function)
+        print("Copied function to clipboard:\n{}\n".format(function))
 
 
 if __name__ == '__main__':
@@ -61,6 +72,7 @@ if __name__ == '__main__':
     root.attributes('-topmost', 1)
 
     root.bind("<Button-1>", left_click)
-    root.bind("<Button-3>", right_click)  # TODO: 3?
+    root.bind("<Button-3>", right_click)
+    root.bind("<Key>", key_click)
 
     root.mainloop()
