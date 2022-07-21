@@ -55,7 +55,7 @@ if __name__ == '__main__':
     root.geometry("{}x{}".format(WINDOW_WIDTH, WINDOW_HEIGHT))
     root.resizable(False, False)
     root.wait_visibility(root)
-    root.wm_attributes('-alpha', 0.3)
+    root.wm_attributes('-alpha', 0.25)
     root.attributes('-topmost', 1)
 
     root.bind("<Button-1>", left_click)
