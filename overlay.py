@@ -51,15 +51,15 @@ def build_function():
 
 
 def right_click(event):
-    points.clear()
-    print("Cleared trajectory")
+    function = build_function()
 
-
-def key_click(event):
-    if event.char == 'c':
-        function = build_function()
+    if function != "":
         pyperclip.copy(function)
-        print("Copied function to clipboard:\n{}\n".format(function))
+        print("Copied function to clipboard:\n{}".format(function))
+
+    if len(points) != 0:
+        print("Cleared trajectory")
+        points.clear()
 
 
 if __name__ == '__main__':
@@ -73,6 +73,5 @@ if __name__ == '__main__':
 
     root.bind("<Button-1>", left_click)
     root.bind("<Button-3>", right_click)
-    root.bind("<Key>", key_click)
 
     root.mainloop()
