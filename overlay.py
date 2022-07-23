@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from tkinter import Tk
-import pyperclip
 
 
 @dataclass
@@ -54,11 +53,10 @@ def right_click(event):
     function = build_function()
 
     if function != "":
-        pyperclip.copy(function)
-        print("Copied function to clipboard:\n{}".format(function))
+        print("Function:\n{}".format(function))
 
     if len(points) != 0:
-        print("Cleared trajectory")
+        print("Trajectory cleared")
         points.clear()
 
 
